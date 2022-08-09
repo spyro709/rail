@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url(./assets/fonts/Montserrat-Bold.ttf);
+}
+$font_primary: "Montserrat";
+$size: 986px;
+@mixin mobile {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
