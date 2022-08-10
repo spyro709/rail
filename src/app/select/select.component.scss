@@ -3,7 +3,7 @@
 main {
   width: 100%;
   height: 100vh;
-  background: #000000;
+  background: $wash;
   position: relative;
 
   .container {
@@ -57,6 +57,8 @@ main {
         &:hover {
           width: 70%;
           -webkit-clip-path: polygon(0% 0%, 50vw 0%, 100% 100%, 0 100%);
+
+          $left: 60%;
         }
       }
       @include mobile {

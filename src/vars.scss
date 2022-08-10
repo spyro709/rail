@@ -4,6 +4,8 @@
 }
 $font_primary: "Montserrat";
 $size: 986px;
+$wash: #000000;
+$white: #daf6ff;
 @mixin mobile {
   @media screen and (max-width: $size) {
     @content;

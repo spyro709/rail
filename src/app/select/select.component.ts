@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./select.component.scss'],
 })
 export class SelectComponent implements OnInit {
-  el: any;
-  constructor() {
-    this.el = document.querySelector('.book');
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 
