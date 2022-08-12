@@ -1,14 +1,23 @@
-<main>
-    <div class="container book">
-        <div class="wrapper">
-            <div class="image"></div>
-            <h1>Rail Books</h1>
-        </div>
-    </div>
-    <div (mouseover)="hoverHandler();" (mouseleave)="leaveHanlder();" class="container movie">
-        <div class="wrapper">
-            <div class="image"></div>
-            <h1>Rail Movies</h1>
-        </div>
-    </div>
+<main [ngClass]="bgClass || 'book'">
+    <section>
+    <ul
+    (mousedown)="mouseDownHandler()"
+    (mouseup)="mouseUpHandler()"
+    (mousemove)="dragHandler($event)"
+    (scroll)="scrollHandler()"
+     class="list">
+    
+        <li class="card left">
+            <article class="movie"></article>
+        </li>
+        <li class="card active">
+            <article class="book"></article>
+        </li>
+        <li  class="card right">
+            <article class="music"></article>
+        </li>
+      
+    </ul>
+    </section>
 </main>
+

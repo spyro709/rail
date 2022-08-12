@@ -1,132 +1,107 @@
 @import "../../vars.scss";
-
 main {
   width: 100%;
   height: 100vh;
-  background: $wash;
-  position: relative;
-
-  .container {
-    position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  transition: 0.2s;
+  user-select: none;
+  &.movie {
+    background-image: url("../../assets/movie.jpg");
+  }
+  &.book {
+    background-image: url("../../assets/book.png");
+  }
+  &.music {
+    background-image: url("../../assets/music.jpg");
+  }
+  section {
+    width: 100%;
     height: 100%;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    background: $wrapper;
     @include mobile {
       width: 100%;
-      height: unset;
+      height: 100%;
     }
-    &:hover {
-      .wrapper {
-        .image {
-          opacity: 1;
-        }
-        h1 {
-          animation: 1s textanime forwards;
-          @keyframes textanime {
-            0% {
-              letter-spacing: 0;
-              opacity: 1;
-            }
-            50% {
-              letter-spacing: 10px;
-              opacity: 1;
-            }
-            100% {
-              letter-spacing: 0;
-              opacity: 1;
-            }
-          }
-        }
+    ul {
+      display: flex;
+      flex-flow: row nowrap;
+      flex: none;
+      overflow-x: auto;
+      &.pause {
+        overflow: hidden;
       }
-    }
-    &.book {
-      left: 0;
-      width: 60%;
-      transition: 0.2s;
-      .image {
-        background-image: url("../../assets/books.jpg");
-      }
-      @include desktop {
-        -webkit-clip-path: polygon(0% 0%, 40vw 0%, 100% 100%, 0 100%);
-        &:hover + .movie {
-          width: 50%;
-        }
-        &.small {
-          width: 50%;
-          -webkit-clip-path: polygon(0% 0%, 30vw 0%, 100% 100%, 0 100%);
-        }
-        &:hover {
-          width: 70%;
-          -webkit-clip-path: polygon(0% 0%, 50vw 0%, 100% 100%, 0 100%);
-
-          $left: 60%;
-        }
-      }
-      @include mobile {
-        width: 100%;
-        height: 60%;
-        -webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 40vh);
-        &:hover + .movie {
-          height: 50%;
-        }
-        &.small {
-          height: 50%;
-          -webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 30vh);
-        }
-        &:hover {
-          height: 70%;
-          -webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 50vh);
-        }
-      }
-    }
-    &.movie {
-      transition: 0.2s;
-      width: 60%;
-      @include desktop {
-        right: 0px;
-        -webkit-clip-path: polygon(0 0%, 100% 0%, 100% 100%, 20vw 100%);
-        &:hover {
-          width: 70%;
-        }
-      }
-      @include mobile {
-        bottom: 0;
-        height: 60%;
-        -webkit-clip-path: polygon(0 0, 100% 20vh, 100% 100%, 0 100%);
-        width: 100%;
-        &.in {
-          width: 100%;
-          height: 73%;
-          -webkit-clip-path: polygon(0 0vh, 100% 20vh, 100% 100%, 0 100%);
-        }
-      }
-      .image {
-        background-image: url("../../assets/movie.jpg");
-      }
-    }
-    .wrapper {
       width: 100%;
       height: 100%;
-      display: grid;
-      place-items: center;
-      position: relative;
-      h1 {
-        color: #f1f1f1;
-        z-index: 999;
-        opacity: 0.5;
-        font-family: $font_primary;
-        font-weight: 100;
-        font-size: 3rem;
-        @include mobile {
-          font-size: 2rem;
-        }
+      list-style: none;
+      @include desktop {
+        padding: 10% 20%;
       }
-      .image {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        opacity: 0.5;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .card {
+        align-self: center;
+        flex: none;
+        height: 70%;
+        width: 50%;
+        position: relative;
+        @include desktop {
+          height: 100%;
+        }
+        @include mobile {
+          width: 70%;
+        }
+        &.active {
+          z-index: 9999;
+          order: 2;
+          article {
+            opacity: 1;
+            box-shadow: 0 0 0 3px $border;
+            transform: scale(1);
+          }
+        }
+        &.left {
+          order: 1;
+          @include mobile {
+            left: 7%;
+          }
+        }
+        &.right {
+          order: 3;
+          @include mobile {
+            left: -7%;
+          }
+        }
+        article {
+          opacity: 0.5;
+          position: absolute;
+          transform: scale(0.7);
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          transition: 0.2s;
+          background-position: center;
+          @include desktop {
+            cursor: pointer;
+          }
+          &.movie {
+            background-image: url("../../assets/movie.jpg");
+          }
+          &.book {
+            background-image: url("../../assets/book.png");
+          }
+          &.music {
+            background-image: url("../../assets/music.jpg");
+          }
+        }
       }
     }
   }

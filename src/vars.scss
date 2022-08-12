@@ -3,16 +3,16 @@
   src: url(./assets/fonts/Montserrat-Bold.ttf);
 }
 $font_primary: "Montserrat";
-$size: 986px;
-$wash: #000000;
-$white: #daf6ff;
+$view: 986px;
+$wrapper: #1818186e;
+$border: #ff0;
 @mixin mobile {
-  @media screen and (max-width: $size) {
+  @media screen and (max-width: $view) {
     @content;
   }
 }
 @mixin desktop {
-  @media screen and (min-width: $size) {
+  @media screen and (min-width: $view) {
     @content;
   }
 }
