@@ -209,7 +209,5 @@ export class SelectComponent implements OnInit {
       this.ul?.classList.remove('pause');
       this.coolDown = false;
     }, 250);
-
-    this.ul.removeEventListener('scroll', this.scrollHandler);
   }
 }
